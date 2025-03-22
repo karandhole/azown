@@ -4,6 +4,7 @@ const cors = require("cors");
 connectToMongo();
 const app = express();
 const port = 5000;
+const path = require("path");
 
 app.use(express.json({ limit: "500mb" }));
 app.use(
@@ -22,3 +23,8 @@ app.use("/likes", require("./routes/likeprop"));
 app.listen(port, () => {
   console.log(`server is run on ${port}`);
 });
+
+
+const _dirname=path.dirname("")
+const buildpath= path.join(_dirname,"../client/build")
+app.use(express.static(buildpath));
